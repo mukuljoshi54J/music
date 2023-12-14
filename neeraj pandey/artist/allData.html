@@ -1,0 +1,64 @@
+<!-- allData.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Data</title>
+</head>
+
+<body>
+
+    <div class="container_main">
+        <a href="/index.html">Go to home</a>
+        <h2>All Data</h2>
+
+        <!-- Container for displaying liked songs -->
+        <div id="likedSongsContainer"></div>
+
+        <div id="allSongsContainer"></div>
+
+        <!-- Play button -->
+        <div id="audioControls"></div>
+    </div>
+
+    <script>
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+            const likedSongsContainer = document.getElementById('likedSongsContainer');
+            const likedSongs = getLikedSongs(); // Retrieve liked songs from local storage
+
+            updateLikedSongs();
+
+            function updateLikedSongs() {
+                // Calculate the total number of likes
+                const totalLikes = likedSongs.length;
+
+                // Display liked songs and total likes on the allData.html page
+                likedSongsContainer.innerHTML = `<h2>Liked Songs:</h2>`;
+                likedSongs.forEach((likedSong, index) => {
+                    likedSongsContainer.innerHTML += `<p>${index + 1}. ${likedSong}</p>`;
+                });
+
+                // Update the text of the "Liked Songs" link with the total likes
+                const likedSongsLink = document.querySelector('.like-button[data-song-index="0"]');
+                if (likedSongsLink) {
+                    likedSongsLink.textContent = `Liked Songs (${totalLikes})`;
+                }
+            }
+
+            function getLikedSongs() {
+                // Retrieve liked songs from local storage
+                const storedLikedSongs = localStorage.getItem('likedSongs');
+                return storedLikedSongs ? JSON.parse(storedLikedSongs) : [];
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    /* background-color: lemonchiffon; */
+   
+    background-image: url('background.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.search {
+    /* padding: 10px; */
+    outline: none;
+}
+
+.inp_btn {
+    /* padding: 8px 20px; */
+    background-color: rgb(26, 95, 184);
+    border: none;
+}
+
+.logo_music{
+     width: 80px;
+     height: 50px;
+     margin-left: -8rem;
+     border-radius: 5px;
+
+}
+
+.main {
+    margin: 15px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.like-button {
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 80px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+
+
+}
+
+.like-button:hover {
+    background-color: #2980b9;
+}
+
+#headerImages {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#headerImages img {
+    width: 100px;
+    /* Adjust the width as needed */
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#headerImages img:hover {
+    transform: scale(1.1);
+    /* Adjust the scale factor as needed */
+}
+
+.slideshow-container {
+    max-width: 1250px;
+    position: relative;
+    margin: auto;
+
+}
+
+.h1 {
+    margin-left: -13vw;
+}
+
+.mySlides {
+    display: none;
+}
+
+.img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+#gridh {
+    margin-top: 60px;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.like-button2 {
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: end;
+    /* Center vertically */
+    background-size: 100% 100%;
+    /* Adjust image size to cover the entire grid container */
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-image: linear-gradient(red, blue);
+    /* Linear gradient from red to blue */
+    border-image-slice: 1;
+    /* Slices the border image into 9 equal parts */
+
+
+
+
+}
+
+#i1 {
+    background-image: url("pappu.jpg");
+
+}
+
+#i2 {
+    background-image: url("priyanka.jpg");
+}
+
+#i3 {
+    background-image: url("pritam.jpg");
+}
+
+#i4 {
+    background-image: url("narendra singh.jpg");
+}
+
+#i5 {
+    background-image: url("inderarya.jpg");
+}
+
+
+.like-button2:hover {
+    transform: scale(1.05);
+    /* Increase the scale value for a stronger zoom effect */
+
+}
+
+.carousel-inner {
+    
+    width: 100%;
+    height: 300px;
+
+    border-radius: 10px;
+    margin: auto;
+}
+.carousel-inner .img{
+    width: 100%;
+    height: 400px;
+}
+
+#audioPlayer {
+    position: absolute;
+    top: 30%;
+    background-color: blue;
+}
+
+.pause-btn {
+    background-color: lightcoral;
+
+}
+
+.buttonContainer {
+    /* margin-top: 10%; */
+
+}
+
+#searchResults {
+    /* background-color: red; */
+    border: none;
+}
+
+#displayedSongContainer {
+    background-color: green;
+}

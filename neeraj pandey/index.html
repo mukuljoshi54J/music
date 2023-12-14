@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="index.css" />
+ 
+
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+
+      <div>
+        <a href="index.html">Home</a>
+        <input class="search" type="text" placeholder="Search Songs" />
+        <button class="inp_btn">Search</button>
+      </div>
+
+
+
+
+      <div>
+        <img class="logo_music" src="logo.jpg" alt="">
+      </div>
+
+      <div>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+
+
+
+
+
+
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="slideshow-container">
+      <!-- Slides -->
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active bg-light"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner d-flex">
+          <div class="carousel-item active">
+            <img
+              src="slider2.jpg"
+              class="img" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img
+              src="slider3.jpg"
+              class="img" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img
+              src="slider4.jpg"
+              class="img" alt="...">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <div class="grid-container">
+      <a href="artist/allData.html" class="like-button" data-song-index="0">Liked Songs</a>
+      <a href="#" class="like-button">Downloaded Songs</a>
+      <a href="#" class="like-button">New Realeased</a>
+      <a href="#" class="like-button">Mood</a>
+    </div>
+    <div id="likedSongsContainer"></div>
+
+    <h1 id="gridh"> Songs By Artist Name</h1>
+    <div class="grid-container2">
+      <div class="a">
+        <a href="/artist/pappu/pappu.html" class="like-button2" id="i1" onclick="songByArtist()"></a>
+        <h1 class="ah">pappu karki</h1>
+      </div>
+
+      <div class="a">
+        <a href="artist\priyanka\priyanka.html" class="like-button2" id="i2"></a>
+        <h1 class="ah">Priyanka Mehra</h1>
+      </div>
+
+      <div class="a">
+        <a href="artist/pritam/pritam.html" class="like-button2" id="i3"></a>
+        <h1 class="ah">Pritam Bhartwan</h1>
+      </div>
+
+      <div class="a">
+        <a href="artist/narendra negi/narendra.html" class="like-button2" id="i4"></a>
+        <h1 class="ah">Narendra singh negi</h1>
+      </div>
+
+      <div class="a">
+        <a href="artist/inder arya/inder.html" class="like-button2" id="i5"></a>
+        <h1 class="ah">Inder kumar</h1>
+      </div>
+    </div>
+  </main>
+
+  <div id="searchResults"></div>
+  <audio id="audioPlayer" controls style="display: none;"></audio>
+
+
+  <div id="displayedSongContainer"></div>
+
+  <div class="buttonContainer"></div>
+  <button id="removeButton">Remove</button>
+  <div id="showData"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let search = document.querySelector('.search');
+      let inp_btn = document.querySelector('.inp_btn');
+      let searchResultsContainer = document.getElementById('searchResults');
+      let slideshowContainer = document.querySelector('.slideshow-container');
+      let gridContainer = document.querySelector('.grid-container');
+      let gridContainer2 = document.querySelector('.grid-container2');
+      let buttonContainer = document.querySelector('.buttonContainer')
+      let gridh = document.getElementById('gridh');
+      let removeButton = document.getElementById('removeButton');
+
+      const musicData = [
+        { name: 'o laali ho', song: 'allsongs/song/O Laali Ho.mp3' },
+        { name: 'chaukhote ki parwati', song: 'allsongs/song/Chaukote Ki Parvati - Pahadi.mp3' },
+        { name: 'sun le dagadiya', song: 'allsongs/song/Sun Le Dagadiya.mp3' },
+        { name: 'fwa bag re', song: 'allsongs/song/Fwa Bagha Re.mp3' },
+
+        { name: 'ainshu ka baras', song: 'allsongs/song/Ainshu Ka Baras - Garhwali Song.mp3' },
+        { name: 'bol chudi bol', song: 'allsongs/song/Bol Chudi Bol.mp3' },
+        { name: 'chaukhutiya', song: 'allsongs/song/Chaukhutiya - Garhwali Song.mp3' },
+        { name: 'genda fool', song: 'allsongs/song/Genda Phool - Pahari Version.mp3' },
+
+        { name: 'hiya parani', song: 'allsongs/Hiya Parani.mp3' },
+        { name: 'jadwan', song: 'allsongs/Jadwan (Chala Samdhini).mp3' },
+        { name: 'meri basanti', song: 'allsongs/Meri Basanti.mp3' },
+        { name: 'mori rakhya', song: 'allsongs/Mori rakhya kholi.mp3' },
+
+        { name: 'geet lana thandi', song: 'allsongs/song/Geet Lana Taandi Bal.mp3' },
+        { name: 'kui ta baat', song: 'allsongs/song/Kui Ta Baat Holi.mp3' },
+        { name: 'rai maasi ko phool', song: 'allsongs/song/Rai Maasi Ko Phool.mp3' },
+        { name: 'thando re thando', song: 'allsongs/song/Thando Re Thando.mp3' },
+
+        { name: 'gulabi sharara', song: 'allsongs/song/Gulabi Sharara.mp3' },
+        { name: 'mathu mathu', song: 'allsongs/song/Mathu Mathu - Uttrakhandi.mp3' },
+        { name: 'mero lehenga', song: 'allsongs/song/Mero Lehanga.mp3' },
+        { name: 'photo teri', song: 'allsongs/song/Photo Teri - Kumaoni.mp3' },
+
+
+        // Add more songs as needed
+      ];
+
+      let previousResultElement = null;
+
+      function searchSong() {
+        let searchTerm = search.value.trim().toLowerCase();
+        searchResultsContainer.innerHTML = ''; // Clear previous results
+
+        // Remove the previous result element from the DOM
+        if (previousResultElement && previousResultElement.parentElement) {
+          previousResultElement.parentElement.removeChild(previousResultElement);
+        }
+
+        // Filter songs based on the search term
+        let filteredSongs = musicData.filter(song => song.name.toLowerCase().includes(searchTerm));
+
+        // Display results
+        filteredSongs.forEach(song => {
+          resultElement = document.createElement('div');
+          resultElement.textContent = song.name;
+          resultElement.style.fontSize = '22px';
+
+          // Add a play button for each song
+          let playButton = document.createElement('button');
+          playButton.textContent = 'Play';
+          playButton.style.marginTop = '10%';
+          playButton.style.display = 'block';
+          playButton.style.color = 'brown';
+          playButton.style.marginLeft = '30px';
+
+          playButton.addEventListener('click', () => playSong(song.song, resultElement));
+
+          searchResultsContainer.appendChild(resultElement);
+          resultElement.appendChild(playButton);
+
+          // Store the current result element as the previous one
+          previousResultElement = resultElement;
+        });
+
+        slideshowContainer.style.display = 'none';
+        gridh.style.display = 'none';
+        gridContainer.style.display = 'none';
+        gridContainer2.style.display = 'none';
+
+        search.value = '';
+
+        // Focus on the first search result
+        if (searchResultsContainer.firstChild) {
+          searchResultsContainer.firstChild.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      function playSong(songUrl, resultElement) {
+        let audioPlayer = document.getElementById('audioPlayer');
+        if (!audioPlayer) {
+          audioPlayer = document.createElement('audio');
+          audioPlayer.id = 'audioPlayer';
+          document.body.appendChild(audioPlayer);
+        }
+
+        // Store the current playback position
+        let currentPosition = audioPlayer.currentTime;
+
+        // Pause the currently playing song
+        audioPlayer.pause();
+
+        // Set the new song URL
+        audioPlayer.src = songUrl;
+
+        // Play the new song
+        audioPlayer.play();
+
+        // Set the stored playback position after starting to play the new song
+        audioPlayer.currentTime = currentPosition;
+
+        audioPlayer.style.display = 'block';
+
+        // Clear previous pause buttons
+        buttonContainer.innerHTML = '';
+
+        let pauseButton = document.createElement('button');
+        pauseButton.textContent = 'Pause';
+        pauseButton.className = 'pause-btn';
+        pauseButton.style.marginLeft = '30px';
+
+        pauseButton.addEventListener('click', () => {
+          if (!audioPlayer.paused) {
+            // Store the current playback position before pausing
+            currentPosition = audioPlayer.currentTime;
+            audioPlayer.pause();
+          }
+        });
+
+        buttonContainer.appendChild(pauseButton);
+      }
+
+      
+
+      inp_btn.addEventListener('click', () => {
+        if (!search.value.trim()) {
+          alert('please enter a song name');
+        } else {
+          searchSong();
+        }
+      });
+
+      removeButton.style.marginLeft = '30px'
+      // Remove Button functionality
+      removeButton.addEventListener('click', () => {
+        if (audioPlayer) {
+          audioPlayer.pause();
+          audioPlayer.src = '';
+          audioPlayer.style.display = 'none';
+
+          buttonContainer.innerHTML = ''; // Clear pause button
+          if (resultElement) {
+            resultElement.style.display = 'none';
+          }
+        }
+
+        removeButton.style.display = 'none';
+      });
+
+
+    });
+
+
+  </script>
+
+
+
+
+</body>
+
+</html>
